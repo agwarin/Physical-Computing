@@ -33,6 +33,7 @@ LCD.write(148+i);
 }
 
 void loop (){
+  //water spout 1
   LCD.write(136); 
  water(); 
   LCD.write(0x01);
@@ -40,6 +41,7 @@ void loop (){
   delay(200);
   LCD.write(0x20);//space
   
+  //water spout 2
    LCD.write(137);
   water1();
    LCD.write(0x02);
@@ -52,7 +54,8 @@ void loop (){
     LCD.write(0x20);//space
       LCD.write(135);
    LCD.write(0x20);//space
-  
+ 
+ //water spout 3 
    LCD.write(138);
   water2();
     LCD.write(0x03);
