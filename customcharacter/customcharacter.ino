@@ -9,6 +9,7 @@ LCD.begin(9600);
 LCD.write(0x0C); //clears the screen 
 delay(5);
 LCD.write(0x11);
+LCD.write(0x16);
 
  LCD.write(217);                // Select the 4th scale (A = 440Hz)
   /* 
