@@ -10,8 +10,11 @@ LCD.write(0x0C); //clears the screen
 delay(5);
 LCD.write(0x11);
 
-//LCD.write(0x11);
-//LCD.print ("hellow world");
+ LCD.write(217);                // Select the 4th scale (A = 440Hz)
+  /* 
+  Scale  A    A#  B    C    C#   D    D#   E    F    F#   G    G#
+  4      440  466 494  523  554  587  622  659  698  740  784  831 
+  */
 
 for (int i=1; i<15; i++){
 LCD.write(148+i);
@@ -41,6 +44,12 @@ void loop (){
   delay(200);
   LCD.write(0x20);//space
   
+  //music
+  
+  LCD.write(210);                // 1/8 note
+  LCD.write(223);                // C tone
+  LCD.write(224);                // C# tone
+  
   //water spout 2
    LCD.write(137);
   water1();
@@ -49,11 +58,16 @@ void loop (){
   water1();
    LCD.write(0x02);
   delay(200);
-    LCD.write(137)
-    ;
+    LCD.write(137);
+    
     LCD.write(0x20);//space
       LCD.write(135);
    LCD.write(0x20);//space
+   
+   //music 2  
+  LCD.write(210);                
+  LCD.write(225);                // D tone
+  LCD.write(226);                // D# tone
  
  //water spout 3 
    LCD.write(138);
@@ -68,6 +82,12 @@ void loop (){
    LCD.write(0x20);//space
        LCD.write(134);
    LCD.write(0x20);//space
+   
+   //music 3  
+  LCD.write(210);                // 1/4 note
+  LCD.write(227);                // C tone
+
+
  
 }//void loop closer
 
