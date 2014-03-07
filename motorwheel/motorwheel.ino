@@ -1,11 +1,11 @@
  
   const int wheel1A = 11;    // H-bridge leg 1 (pin 2, 1A)
   const int wheel2A = 12;    // H-bridge leg 2 (pin 7, 2A)
-  const int enablePin12 = 13;    // H-bridge enable pin
+  const int enablePin12 = 6;    // H-bridge enable pin
 
   const int wheel4A = 9;    // H-bridge leg 1 (pin 2, 1A)
   const int wheel3A = 10;    // H-bridge leg 2 (pin 7, 2A)
-  const int enablePin34 = 8;    // H-bridge enable pin
+  const int enablePin34 = 5;    // H-bridge enable pin
   
   
    void setup() {
