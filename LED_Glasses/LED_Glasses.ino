@@ -120,3 +120,40 @@ void loop() {
   }
   matrix.setRotation(0);
 }
+
+
+
+void left(){
+
+
+
+}
+
+
+
+void right(){
+
+
+
+}
+
+
+void blinkleft(){
+
+
+
+}
+
+
+void blinkright(){
+
+
+
+}
+
+void look(){
+
+
+
+}
+
