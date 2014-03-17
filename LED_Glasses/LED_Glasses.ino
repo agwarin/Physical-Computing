@@ -29,6 +29,16 @@ B01111110,
 B01010100,
 B01010100},
 
+notblinkright[] =
+{B00000000,
+B00000000,
+B00000000,
+B10000001,
+B11000001,
+B01111110,
+B01010100,
+B01010100},
+
 right[] =
 
 {B00111100,
@@ -65,30 +75,80 @@ B00111100};
 
 void loop() {
   
-
-  matrix.clear();
-  matrix.drawBitmap(0, 0, blinkleft, 8, 8, LED_RED);
+   matrix[0].clear();
+  matrix.drawBitmap(0, 0, look, 8, 8, LED_GREEN);
   matrix.writeDisplay();
-  delay(500);
+  delay(1000);
   
-  matrix.clear();
+  matrix[0].clear();
   matrix.drawBitmap(0, 0, left, 8, 8, LED_GREEN);
   matrix.writeDisplay();
   delay(500);
   
-  matrix.clear();
+  matrix[0].clear();
   matrix.drawBitmap(0, 0, look, 8, 8, LED_GREEN);
   matrix.writeDisplay();
-  delay(1500);
+  delay(500);
 
-  matrix.clear();
+  matrix[0].clear();
   matrix.drawBitmap(0, 0, right, 8, 8, LED_GREEN);
   matrix.writeDisplay();
   delay(500);
   
+   matrix[0].clear();
+  matrix.drawBitmap(0, 0, look, 8, 8, LED_GREEN);
+  matrix.writeDisplay();
+  delay(500);
+
+  matrix[0].clear();
+  matrix.drawBitmap(0, 0, right, 8, 8, LED_GREEN);
+  matrix.writeDisplay();
+  delay(500);
+  
+   matrix[0].clear();
+  matrix.drawBitmap(0, 0, blinkleft, 8, 8, LED_RED);
+  matrix.writeDisplay();
+  delay(500);
+  
+  
+     matrix[0].clear();
+  matrix.drawBitmap(0, 0, look, 8, 8, LED_GREEN);
+  matrix.writeDisplay();
+  delay(1000);
+  
+  matrix[1].clear();
+  matrix.drawBitmap(0, 0, left, 8, 8, LED_GREEN);
+  matrix.writeDisplay();
+  delay(500);
+  
+  matrix[1].clear();
+  matrix.drawBitmap(0, 0, look, 8, 8, LED_GREEN);
+  matrix.writeDisplay();
+  delay(500);
+
+  matrix[1].clear();
+  matrix.drawBitmap(0, 0, right, 8, 8, LED_GREEN);
+  matrix.writeDisplay();
+  delay(500);
+  
+   matrix[1].clear();
+  matrix.drawBitmap(0, 0, look, 8, 8, LED_GREEN);
+  matrix.writeDisplay();
+  delay(500);
+
+  matrix[1].clear();
+  matrix.drawBitmap(0, 0, right, 8, 8, LED_GREEN);
+  matrix.writeDisplay();
+  delay(500);
+  
+   matrix[1].clear();
+  matrix.drawBitmap(0, 0, notblinkright, 8, 8, LED_RED);
+  matrix.writeDisplay();
+  delay(500);
   
 
-  matrix.setRotation(0);
+  matrix[0].setRotation(0);
+  matrix[1].setRotation(0);
 }
 
 
