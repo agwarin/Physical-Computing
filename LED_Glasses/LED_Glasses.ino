@@ -17,14 +17,22 @@ void setup() {
   
   
 //  matrix.begin(0x70);  // pass in the address
+<<<<<<< HEAD
 //Adafruit_8x8matrix matrix[2];
 
+=======
+Adafruit_8x8matrix matrix[2];
+>>>>>>> FETCH_HEAD
 
  for(uint8_t i=0; i<2; i++) {
    // matrix[i] = Adafruit_BicolorMatrix();
     matrix[i].begin(matrixAddr [i]);
   }
+<<<<<<< HEAD
 }
+=======
+}//setup bracket
+>>>>>>> FETCH_HEAD
 static const uint8_t PROGMEM
    
    blinkleft[] =
