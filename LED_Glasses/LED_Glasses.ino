@@ -9,8 +9,13 @@ void setup() {
   Serial.begin(9600);
   Serial.println("8x8 LED Matrix Test");
   
-  matrix.begin(0x70);  // pass in the address
+//  matrix.begin(0x70);  // pass in the address
+Adafruit_8x8matrix matrix[2];
 }
+ for(uint8_t i=0; i<2; i++) {
+    matrix[i] = Adafruit_8x8matrix();
+    matrix[i].begin(0x70 + i);
+  }
 
 static const uint8_t PROGMEM
    
