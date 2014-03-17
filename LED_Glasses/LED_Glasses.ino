@@ -12,7 +12,6 @@ Adafruit_BicolorMatrix matrix [2] = {
 
 static const uint8_t matrixAddr[] = { 0x70, 0x71 };
 
-
 void setup() {
   
   Serial.begin(9600);
@@ -109,7 +108,6 @@ void loop() {
  matrix[1].writeDisplay();
   delay(500);
   
-  
  //1c 
   matrix[0].clear();
   matrix[0].drawBitmap(0, 0, look, 8, 8, LED_GREEN);
@@ -135,7 +133,6 @@ void loop() {
  matrix[1].writeDisplay();
   delay(500);
   
-  
  //1e 
    matrix[0].clear();
   matrix[0].drawBitmap(0, 0, look, 8, 8, LED_GREEN);
@@ -144,15 +141,7 @@ void loop() {
   //2e
   matrix[1].clear();
   matrix[1].drawBitmap(0, 0, look, 8, 8, LED_GREEN);
-<<<<<<< HEAD
   delay(300);
-
-
-=======
-  matrix[1].writeDisplay();
-  delay(100);
-  
->>>>>>> FETCH_HEAD
   
 //1f
   matrix[0].clear();
@@ -163,7 +152,6 @@ void loop() {
    matrix[1].clear();
   matrix[1].drawBitmap(0, 0, right, 8, 8, LED_GREEN);
   matrix[1].writeDisplay();
-<<<<<<< HEAD
 
   delay(200);
   
@@ -178,25 +166,16 @@ void loop() {
   matrix[1].writeDisplay();
   delay(300);
 
-=======
-  delay(500);
-  
->>>>>>> FETCH_HEAD
  //1g 
    matrix[0].clear();
   matrix[0].drawBitmap(0, 0, blinkleft, 8, 8, LED_RED);
   matrix[0].writeDisplay();
-<<<<<<< HEAD
   delay(300);
   
-=======
-  delay(100);
->>>>>>> FETCH_HEAD
 //2g  
      matrix[1].clear();
   matrix[1].drawBitmap(0, 0, look, 8, 8, LED_GREEN);
  matrix[1].writeDisplay();
-<<<<<<< HEAD
 
   delay(300);
 
@@ -234,8 +213,4 @@ void loop() {
   delay(300);
   
   }
-=======
-  delay(100);
->>>>>>> FETCH_HEAD
 
-  }
