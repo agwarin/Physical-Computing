@@ -24,6 +24,7 @@ void setup()
 void loop() 
 {
   int reading  = analogRead(lightPin);
+  
   // Linearize Sharp GP2Y0A02YK
   distance = Dist.getDistanceCentimeter();
 float distance = 21208 * pow(reading, -1.251);  // inches
