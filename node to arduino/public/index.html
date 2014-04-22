@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<title>button and pot</title>
+	</head>
+	<body>
+		<h1>Hello Arduino</h1>
+		<h4>switching LED</h4>
+		<button id="toggleLED" style="font-size: 1.2em; font-weight: 100;width: 100px; height: 100px; border-radius: 50%; background: white">ON/OFF</button>
+
+		<!--new-->
+		<h4>pressing button</h4>
+		<div id="ardButton" style="width: 100px; height: 100px; background: blue;"> 
+		</div>
+		
+		<h4>receiving potmeter value</h4>
+		<div id="pot" style="display:block; height: 25px; background: red"></div>
+		<br><br>
+		<div id="slider"></div>
+
+		<script src="http://localhost:9001/socket.io/socket.io.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script>
+			var socket = io.connect('http://localhost:9000');
+
+			//this is going to be what we write it in
+			var isOn = false;
+			$('#toggleLED').click(function() {
+				if(isOn == false) {
+					isOn = true;
+					$(this).css({
+						background: 'yellow'
+					});
+					// send signal
+					socket.emit('led', true);
+				} else if(isOn == true) {
+					isOn = false;
+					$(this).css({
+						background: 'white'
+					});
+					// send signal
+					socket.emit('led', false);
+				}
+			});
+
+			socket.on('pot', function(data) {
+				console.log("data from pot="+data);	
+				$('#pot').animate({
+					'width': data
+				}, 50);
+			});
+
+			
+			
+			//analog button
+				socket.on('ardButton', function(data) {	
+					console.log("data with just button is="+data);	
+					//if(sendDataButton==1){
+					if(data==1){						
+						$('#ardButton').css({
+							'height': '50px'
+						});
+						console.log("button is pressed");
+					} else{
+						$('#ardButton').css({
+							'height': '100px'
+						});
+
+						}//else
+			});
+	
+				//WHAT IS THIS BELOW????, this is just mapping
+			/*function map_range(value, low1, high1, low2, high2) {
+			    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+			}*/
+
+		</script>
+	</body>
+</html>
