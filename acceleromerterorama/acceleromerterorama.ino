@@ -1,6 +1,8 @@
 #include <Wire.h>
 #include <Adafruit_LSM303.h>
 #include <Adafruit_NeoPixel.h>
+#include "musical_notes.h"
+int speakerPin = 9; // speaker connected to digital pin 9 
 
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = pin number (most are valid)
@@ -29,7 +31,8 @@ uint8_t myFavoriteColors[][3] = {{200,   0, 200},   // purple
 void setup() 
 {
   Serial.begin(9600);
-  
+   pinMode(speakerPin, OUTPUT); // sets the speakerPin to be an output 
+   
   // Try to initialise and warn if we couldn't detect the chip
   if (!lsm.begin())
   {
@@ -70,6 +73,7 @@ void loop()
   // are we moving 
   if (abs(newVector - storedVector) > MOVE_THRESHOLD) {
     Serial.println("Twinkle!");
+    scale();
     flashRandom(5, 1);  // first number is 'wait' delay, shorter num == shorter twinkle
     flashRandom(5, 3);  // second number is how many neopixels to simultaneously light up
     flashRandom(5, 2);
@@ -111,4 +115,17 @@ void flashRandom(int wait, uint8_t howmany) {
     }
   }
   // LEDs will be off when done (they are faded to 0)
-}
+}// end flash random
+
+
+void scale() 
+{    
+          beep(speakerPin, note_C7,500); //C: play the note C for 500ms 
+          beep(speakerPin, note_D7,500); //D 
+          beep(speakerPin, note_E7,500); //E 
+          beep(speakerPin, note_F7,500); //F 
+          beep(speakerPin, note_G7,500); //G 
+          beep(speakerPin, note_A7,500); //A 
+          beep(speakerPin, note_B7,500); //B 
+          beep(speakerPin, note_C8,500); //C 
+} //end scale
