@@ -73,7 +73,7 @@ void loop()
   // are we moving 
   if (abs(newVector - storedVector) > MOVE_THRESHOLD) {
     Serial.println("Twinkle!");
-    scale();
+  
     flashRandom(5, 1);  // first number is 'wait' delay, shorter num == shorter twinkle
     flashRandom(5, 3);  // second number is how many neopixels to simultaneously light up
     flashRandom(5, 2);
@@ -110,6 +110,7 @@ void flashRandom(int wait, uint8_t howmany) {
       int b = blue * x; b /= 5;
       
       strip.setPixelColor(j, strip.Color(r, g, b));
+      
       strip.show();
       delay(wait);
     }
@@ -149,3 +150,13 @@ void scale()
           beep(speakerPin, note_B7,500); //B 
           beep(speakerPin, note_C8,500); //C 
 } //end scale
+
+void armlift()
+
+{
+  Serial.print("Accel X: "); Serial.print((int)lsm.accelData.x); Serial.print(" ");
+
+
+
+}
+
