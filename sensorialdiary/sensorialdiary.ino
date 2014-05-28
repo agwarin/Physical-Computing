@@ -22,16 +22,21 @@
 #define VCNL4000_MEASUREPROXIMITY 0x08
 #define VCNL4000_AMBIENTREADY 0x40
 #define VCNL4000_PROXIMITYREADY 0x20
+#include <Adafruit_NeoPixel.h>
+
+#define PIN 6
 
 // end of Adafruit coding
 int Pin = 6;  
 int LED = 5;
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
   Serial.begin(9600);  // Begin sending information to the screen
   Serial.println("VCNL");
     Wire.begin();
-    
+      strip.begin();
+  strip.show(); // Initialize all pixels to 'off'
 
   
   // check to see if the board has recognized that
@@ -99,21 +104,28 @@ void loop(){
   
    int lux = readAmbient() * 0.25;
     int pro = readProximity();
-    
-    Serial.print(pro);
-    Serial.print(lux);
-
-    if (pro < 2250){//approx 50mm from sensor
-      digitalWrite (Pin, LOW);
-      digitalWrite (LED, LOW);
+      Serial.print("light = ");
+      Serial.print(lux);
+      Serial.print("\t\tProximity = ");
+      Serial.println(pro);
+     // break(); //????
+//    Serial.print(pro);
+//    Serial.print(lux);
+    lighton();
+//
+//    if (lux > 300){//approx 50mm from sensor
+//      digitalWrite (Pin, LOW);
+//      digitalWrite (LED, LOW);
+//       strip.show(); // Initialize all pixels to 'off'
+//      
+//    } else  { 
+//      
+//      digitalWrite(Pin, HIGH);
+//      digitalWrite (LED, HIGH);
+//      Serial.print("Magnet On");
+//      colorWipe(strip.Color(255, 0, 255), 50); // Purple
+//      delay (100);
       
-    } else  { 
-      
-      digitalWrite(Pin, HIGH);
-      digitalWrite (LED, HIGH);
-      Serial.print("Magnet On");
-      strip.Color(127, 127, 127);
-      delay (10000);
 //      digitalWrite (Pin, LOW);
 //      digitalWrite (LED, LOW);
     }
@@ -123,17 +135,21 @@ void loop(){
 //  } else {
 //    digitalWrite(LED, LOW);
 //  }      
-    delay(100);
     
-
-      
       // output the proximity and ambient light data to the screen
-      Serial.print("Proximity = ");
-      Serial.print(lux);
-      Serial.print("\t\tProximity = ");
-      Serial.println(pro);
-     // break(); //????
-      }
+    
+//      }
+      
+      //The light turning on function
+void lighton(){
+   int lux = readAmbient() * 0.25;
+    int pro = readProximity();
+    if (lux < 300){//approx 50mm from sensor
+      Serial.print("Magnet On");
+      colorWipe(strip.Color(255, 0, 255), 50); // Purple
+      delay (100);
+    }
+}
 //      delay (100);
 //  }
 //  
@@ -207,5 +223,15 @@ void write8(uint8_t address, uint8_t data)
   Wire.endTransmission();
 
 }
+
+// Fill the dots one after the other with a color
+void colorWipe(uint32_t c, uint8_t wait) {
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+      strip.setPixelColor(i, c);
+      strip.show();
+      delay(wait);
+  }
+}
+
  
 
