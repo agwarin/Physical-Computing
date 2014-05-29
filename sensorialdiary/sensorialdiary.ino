@@ -29,8 +29,7 @@
 #define PIN12 12
 
 // end of Adafruit coding
-//int Pin = 6;  
-//int LED = 5;
+
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel strip_b = Adafruit_NeoPixel(60, PIN9, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel strip_c = Adafruit_NeoPixel(60, PIN12, NEO_GRB + NEO_KHZ800);
@@ -120,22 +119,7 @@ void loop(){
 //    Serial.print(pro);
 //    Serial.print(lux);
     lighton();
-//
-////    if (lux > 300){//approx 50mm from sensor
-////      digitalWrite (Pin, LOW);
-////      digitalWrite (LED, LOW);
-////       strip.show(); // Initialize all pixels to 'off'
-////      
-////    } else  { 
-////      
-////      digitalWrite(Pin, HIGH);
-////      digitalWrite (LED, HIGH);
-////      Serial.print("Magnet On");
-////      colorWipe(strip.Color(255, 0, 255), 50); // Purple
-////      delay (100);
-//      
-////      digitalWrite (Pin, LOW);
-////      digitalWrite (LED, LOW);
+
     }
 
       
@@ -146,8 +130,6 @@ void lighton(){
     
     if (lux < 50){//approx 50mm from sensor
       Serial.print("Magnet On");
-//      colorWipe(strip.Color(255, 0, 0), 500); // Red
-//  rainbow(500);
   strip_b.setPixelColor(0, 255, 0, 255); //purple
  strip_c.setPixelColor(0, 200, 200, 0); //greenish
   strip.setPixelColor(0, 0, 0, 255); //blue
@@ -161,10 +143,7 @@ void lighton(){
      
     }
     else if (lux > 100){
-      
-//       colorWipe(strip.Color(0, 0, 0), 50); // Red
-//       colorWipe(strip_b.Color(0, 0, 0), 50); // Red
-//       colorWipe(strip_c.Color(0, 0, 0), 50); // Red
+ 
   strip_b.setPixelColor(0, 0, 0, 0); //purple
  strip_c.setPixelColor(0, 0, 0, 0);
   strip.setPixelColor(0, 0, 0, 0);
@@ -175,9 +154,7 @@ void lighton(){
     }
     
 }
-//      delay (100);
-//  }
-//  
+
 // Read 1 byte from the VCNL4000 at 'address'
 uint8_t read8(uint8_t address)
 {
@@ -249,41 +226,4 @@ void write8(uint8_t address, uint8_t data)
 
 }
 
-//// Fill the dots one after the other with a color
-//void colorWipe(uint32_t c, uint8_t wait) {
-//  for(uint16_t i=0; i<strip.numPixels(); i++) {
-//      strip.setPixelColor(i, c);
-//      strip.show();
-//      delay(wait);
-//  }
-//}
-//
-//void rainbow(uint8_t wait) {
-//  uint16_t i, j;
-//
-//  for(j=0; j<256; j++) {
-//    for(i=0; i<strip.numPixels(); i++) {
-//      strip.setPixelColor(i, Wheel((i+j) & 255));
-//    }
-//    strip.show();
-//    delay(wait);
-//  }
-//}
-//
-//
-//// Input a value 0 to 255 to get a color value.
-//// The colours are a transition r - g - b - back to r.
-//uint32_t Wheel(byte WheelPos) {
-//  if(WheelPos < 85) {
-//   return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
-//  } else if(WheelPos < 170) {
-//   WheelPos -= 85;
-//   return strip.Color(255 - WheelPos * 3, 0, WheelPos * 3);
-//  } else {
-//   WheelPos -= 170;
-//   return strip.Color(0, WheelPos * 3, 255 - WheelPos * 3);
-//  }
-//}
-//
-// 
 
